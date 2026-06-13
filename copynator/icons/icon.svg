@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="Copynator icon">
+  <rect width="128" height="128" rx="26" fill="#0b6b5d"/>
+  <path fill="#e3f4ef" d="M39 31h31c12.7 0 23 10.3 23 23v4H78v-4c0-4.4-3.6-8-8-8H39c-4.4 0-8 3.6-8 8v20c0 4.4 3.6 8 8 8h9v15h-9c-12.7 0-23-10.3-23-23V54c0-12.7 10.3-23 23-23Z"/>
+  <path fill="#ffffff" d="M58 51h31c12.7 0 23 10.3 23 23s-10.3 23-23 23H58c-12.7 0-23-10.3-23-23v-4h15v4c0 4.4 3.6 8 8 8h31c4.4 0 8-3.6 8-8s-3.6-8-8-8H58c-4.4 0-8 3.6-8 8v4H35v-4c0-12.7 10.3-23 23-23Z"/>
+  <circle cx="64" cy="64" r="10" fill="#0b6b5d"/>
+</svg>

@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Copynator</title>
+    <link rel="stylesheet" href="popup.css">
+  </head>
+  <body>
+    <main class="app">
+      <header class="header">
+        <div>
+          <h1>Copynator</h1>
+          <p id="tabOrigin">Reading current tab...</p>
+        </div>
+        <button id="refreshButton" class="iconButton" type="button" title="Refresh">R</button>
+      </header>
+
+      <section class="stepPanel" aria-label="Workflow">
+        <button id="captureButton" class="primaryAction" type="button">
+          <span>1</span>
+          Capture source
+        </button>
+        <button id="mapButton" class="primaryAction" type="button">
+          <span>2</span>
+          Map target
+        </button>
+        <button id="recaptureButton" class="primaryAction" type="button">
+          <span>3</span>
+          Recapture
+        </button>
+        <button id="fillButton" class="primaryAction fill" type="button">
+          <span>4</span>
+          Fill page
+        </button>
+      </section>
+
+      <section class="panel" aria-labelledby="currentTitle">
+        <div class="sectionHeader">
+          <h2 id="currentTitle">Current mapping</h2>
+          <button id="clearButton" class="quietButton" type="button">Clear</button>
+        </div>
+        <dl class="meta">
+          <div>
+            <dt>Source</dt>
+            <dd id="sourceOrigin">None</dd>
+          </div>
+          <div>
+            <dt>Target</dt>
+            <dd id="targetOrigin">None</dd>
+          </div>
+        </dl>
+        <div id="fieldList" class="fieldList"></div>
+        <button id="saveButton" class="secondaryAction" type="button">Save this site pair</button>
+      </section>
+
+      <section class="panel" aria-labelledby="savedTitle">
+        <div class="sectionHeader">
+          <h2 id="savedTitle">Saved site pairs</h2>
+        </div>
+        <div id="savedList" class="savedList"></div>
+      </section>
+
+      <p id="status" class="status" role="status" aria-live="polite"></p>
+    </main>
+
+    <script src="popup.js"></script>
+  </body>
+</html>
