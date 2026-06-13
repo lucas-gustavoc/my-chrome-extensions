@@ -220,8 +220,8 @@
       #${OVERLAY_ID} {
         position: fixed;
         z-index: 2147483647;
-        left: 16px;
-        bottom: 16px;
+        top: 16px;
+        right: 16px;
         max-width: min(420px, calc(100vw - 32px));
         padding: 12px 14px;
         border-radius: 8px;
