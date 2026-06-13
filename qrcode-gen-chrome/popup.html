@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>QR Rápido</title>
+    <link rel="stylesheet" href="popup.css">
+  </head>
+  <body>
+    <main class="app">
+      <header class="header">
+        <div>
+          <h1>QR Rápido</h1>
+          <p>Texto local, QR instantâneo.</p>
+        </div>
+      </header>
+
+      <label class="field">
+        <span>Texto</span>
+        <textarea id="textInput" rows="6" placeholder="Cole ou digite aqui..."></textarea>
+      </label>
+
+      <section class="qrPanel" aria-live="polite">
+        <div id="emptyState" class="emptyState">Digite algo para gerar o QR Code.</div>
+        <canvas id="qrCanvas" width="256" height="256" aria-label="QR Code gerado"></canvas>
+      </section>
+
+      <div class="actions">
+        <button id="copyButton" type="button" disabled>Copiar</button>
+        <button id="downloadButton" type="button" disabled>Baixar PNG</button>
+      </div>
+
+      <p id="status" class="status" role="status" aria-live="polite"></p>
+    </main>
+
+    <script src="vendor/qrcode-generator.min.js"></script>
+    <script src="popup.js"></script>
+  </body>
+</html>
