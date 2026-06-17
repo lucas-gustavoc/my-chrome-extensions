@@ -185,6 +185,14 @@ button:disabled {
   font-weight: 700;
 }
 
+.refreshButton {
+  flex: 0 0 auto;
+  min-height: 34px;
+  background: var(--panel);
+  color: var(--accent);
+  font-size: 11px;
+}
+
 .secondaryAction {
   min-height: 40px;
   background: var(--accent);
