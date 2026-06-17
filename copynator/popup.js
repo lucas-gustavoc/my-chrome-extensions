@@ -195,7 +195,8 @@
     try {
       const result = await sendToTab({ type: "COP_FILL", mapping: state.current });
       const missing = result.missing && result.missing.length ? ` Missing: ${result.missing.join(", ")}.` : "";
-      setStatus(`Filled ${result.filled} field${result.filled === 1 ? "" : "s"}.${missing}`, result.filled === 0);
+      const unmatched = result.unmatched && result.unmatched.length ? ` Unmatched: ${result.unmatched.join("; ")}.` : "";
+      setStatus(`Filled ${result.filled} field${result.filled === 1 ? "" : "s"}.${missing}${unmatched}`, result.filled === 0 || Boolean(unmatched));
     } catch (error) {
       setStatus(error.message || "Could not fill this page.", true);
     }

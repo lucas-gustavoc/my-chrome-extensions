@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Copynator Select Field Test</title>
+    <style>
+      body {
+        max-width: 760px;
+        margin: 32px auto;
+        color: #1f2933;
+        font: 15px/1.5 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+
+      main,
+      section,
+      form,
+      label {
+        display: grid;
+        gap: 14px;
+      }
+
+      section {
+        padding: 18px;
+        border: 1px solid #d5ddd8;
+        border-radius: 8px;
+      }
+
+      input,
+      select,
+      button {
+        min-height: 38px;
+        padding: 7px 10px;
+        border: 1px solid #d5ddd8;
+        border-radius: 8px;
+        background: #ffffff;
+        color: inherit;
+        font: inherit;
+      }
+
+      [role="listbox"] {
+        display: none;
+        max-width: 280px;
+        padding: 4px;
+        border: 1px solid #d5ddd8;
+        border-radius: 8px;
+        background: #ffffff;
+        box-shadow: 0 10px 24px rgba(31, 41, 51, 0.14);
+      }
+
+      [role="listbox"].open {
+        display: grid;
+        gap: 2px;
+      }
+
+      [role="option"] {
+        padding: 8px 10px;
+        border-radius: 6px;
+        cursor: pointer;
+      }
+
+      [role="option"]:hover,
+      [role="option"][aria-selected="true"] {
+        background: #e3f4ef;
+      }
+
+      output {
+        min-height: 24px;
+        color: #667085;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Copynator Select Field Test</h1>
+
+      <section aria-labelledby="source-title">
+        <h2 id="source-title">Source Values</h2>
+        <label>
+          Source native select
+          <select id="source-native">
+            <option value="">Choose one</option>
+            <option value="br">Brazil</option>
+            <option value="pt">Portugal</option>
+            <option value="mx">Mexico</option>
+          </select>
+        </label>
+        <label>
+          Source text value
+          <input id="source-text" value="Portugal">
+        </label>
+      </section>
+
+      <section aria-labelledby="target-title">
+        <h2 id="target-title">Target Fields</h2>
+        <form>
+          <label>
+            Target native select
+            <select id="target-native">
+              <option value="">Choose one</option>
+              <option value="brazil">Brazil</option>
+              <option value="portugal">Portugal</option>
+              <option value="mexico">Mexico</option>
+              <option value="disabled" disabled>Disabled match</option>
+            </select>
+          </label>
+
+          <label>
+            React-like change listener
+            <select id="target-react-like">
+              <option value="">Choose one</option>
+              <option value="brazil">Brazil</option>
+              <option value="portugal">Portugal</option>
+              <option value="mexico">Mexico</option>
+            </select>
+          </label>
+          <output id="change-output">No change event yet.</output>
+
+          <div>
+            <button id="custom-trigger" type="button" role="combobox" aria-haspopup="listbox" aria-expanded="false" aria-controls="custom-options">
+              Choose custom option
+            </button>
+            <div id="custom-options" role="listbox" aria-label="Custom countries">
+              <div role="option" data-value="brazil">Brazil</div>
+              <div role="option" data-value="portugal">Portugal</div>
+              <div role="option" data-value="mexico">Mexico</div>
+            </div>
+          </div>
+        </form>
+      </section>
+    </main>
+
+    <script>
+      const trigger = document.getElementById("custom-trigger");
+      const listbox = document.getElementById("custom-options");
+      const output = document.getElementById("change-output");
+
+      document.getElementById("target-react-like").addEventListener("change", (event) => {
+        output.textContent = `Change event received: ${event.target.value}`;
+      });
+
+      trigger.addEventListener("click", () => {
+        const isOpen = trigger.getAttribute("aria-expanded") === "true";
+        trigger.setAttribute("aria-expanded", String(!isOpen));
+        listbox.classList.toggle("open", !isOpen);
+      });
+
+      listbox.addEventListener("click", (event) => {
+        const option = event.target.closest('[role="option"]');
+        if (!option) {
+          return;
+        }
+        Array.from(listbox.querySelectorAll('[role="option"]')).forEach((candidate) => {
+          candidate.setAttribute("aria-selected", String(candidate === option));
+        });
+        trigger.textContent = option.textContent;
+        trigger.dataset.value = option.dataset.value;
+        trigger.setAttribute("aria-expanded", "false");
+        listbox.classList.remove("open");
+      });
+    </script>
+  </body>
+</html>

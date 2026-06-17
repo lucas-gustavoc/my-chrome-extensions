@@ -307,9 +307,21 @@ button:disabled {
 }
 
 .status {
+  display: none;
+  margin-top: -4px;
   min-height: 18px;
+  padding: 9px 10px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--panel);
+}
+
+.status:not(:empty) {
+  display: block;
 }
 
 .status.error {
+  border-color: #efc8c1;
+  background: #fbeae7;
   color: var(--danger);
 }

@@ -12,20 +12,22 @@ Copynator is a local-first Chrome and Microsoft Edge extension for transferring 
 ## How To Use
 
 1. Open the source website and click the Copynator extension icon.
-2. Choose **Capture source**, then click source fields on the page. Name each source field when prompted.
+2. Choose **Capture source**, then click source fields on the page. Name each source field in the Copynator page panel.
 3. Open the target website and click the Copynator extension icon.
-4. Choose **Map target**, then click each target field and choose which source field should fill it.
+4. Choose **Map target**, then click each target field and choose which source field should fill it in the Copynator page panel.
 5. Choose **Save this site pair** if you want to reuse the mapping later.
 6. When the source page has new values, open that source page and choose **Recapture**.
 7. Open the target website and choose **Fill page**.
 
 Use **Delete field** on a field card to remove one source field and its target mapping from the current site-pair mapping.
 
-Press `Esc` while capture or map mode is active to stop the page overlay.
+Press `Esc` while capture or map mode is active to stop the page panel.
 
 ## What It Can Capture
 
-Copynator can track common source fields from inputs, textareas, selects, links, table cells, labels, and regular page text. Recapture rereads those tracked source fields from the current source page. It can fill common inputs, textareas, selects, radio buttons, checkboxes, and editable fields.
+Copynator can track common source fields from inputs, textareas, selects, links, table cells, labels, and regular page text. Recapture rereads those tracked source fields from the current source page.
+
+It can fill common inputs, textareas, native selects, radio buttons, checkboxes, editable fields, and common custom dropdowns built with ARIA combobox/listbox patterns. Unusual custom dropdowns may still need manual handling when their options are not exposed as visible listbox options.
 
 ## Privacy
 
